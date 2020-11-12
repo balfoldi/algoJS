@@ -5,14 +5,17 @@ const {
 const exoTwoOneLoop = (dataArray) => {
     const k = dataArray.shift()
     console.log(dataArray)
+    dataArray = dataArray.reverse()
+
+    var highestBuilding = 0
 
     result = []
 
     const oneLoop = (indexA = 0) => {
         if (indexA === dataArray.length - 1) return
-        if (!dataArray.slice(indexA + 1, dataArray.length).some((building) => {return building > dataArray[indexA] })) {
-            console.log(true)
-            result.push(`${dataArray[indexA]}`)
+        if (dataArray[indexA] > highestBuilding) {
+            result.push(`${dataArray[indexA]} > ${highestBuilding}`)
+            highestBuilding = dataArray[indexA]
         }
         oneLoop(indexA + 1)
 
